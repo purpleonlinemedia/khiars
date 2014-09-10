@@ -1,0 +1,7 @@
+{
+    "name": "thapelo/db_handler",
+    "minimum-stability": "stable",
+    "require": {
+			"respect/validation": "dev-master"
+    }
+}
