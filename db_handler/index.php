@@ -329,6 +329,13 @@ _XML_;
             $counter++;
         }
       }
+      
+      //Build levels
+      $resultSet = mysqli_query($this->conn,"SELECT * FROM customerrelationship WHERE contractNo = '".mysqli_real_escape_string($this->conn,$contractNo)."';",MYSQLI_STORE_RESULT);
+      while($returnRow = mysqli_fetch_assoc($resultSet))
+      {
+          mysqli_query($this->conn,"UPDATE userhierarchy SET totalUsers = (totalUsers+1),wc".$returnRow['wealthCreatorLevel']."=(wc".$returnRow['wealthCreatorLevel']."+1) WHERE contractNo=".$returnRow['introducerNo'].";",MYSQLI_STORE_RESULT);
+      }
    }
    
    function heirarchyLevelBuilder($contractNo,$introducerNo,$counter)
